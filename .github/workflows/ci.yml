@@ -36,7 +36,7 @@ jobs:
       # Step 4: Install build tools
       - name: Install build tools
         run: |
-          python -m pip install --upgrade pip setuptools wheel build poetry-core
+          python -m pip install --upgrade pip setuptools wheel build
       
       # Step 5: Install MCP Server 1 dependencies
       - name: Install MCP Server 1 dependencies
