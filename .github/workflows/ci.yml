@@ -119,7 +119,7 @@ jobs:
       # Step 15: Build Docker images for AMD64 (verification)
       - name: Build Docker images for AMD64
         run: |
-          docker compose build --platform linux/amd64 2>&1 | head -100
+          DOCKER_DEFAULT_PLATFORM=linux/amd64 docker compose build 2>&1 | head -100
         continue-on-error: true
       
       # Step 16: Verify Docker images
