@@ -1,0 +1,62 @@
+[
+  {
+    "name": "check_security_advisories",
+    "description": "🔒 Проверяет security advisories репозитория GitHub. Анализирует безопасность репозитория: список security advisories, уязвимости и их статус, рекомендации по безопасности, история обновлений безопасности.",
+    "args": [
+      {
+        "name": "owner",
+        "type": "string",
+        "description": "Владелец репозитория (username или organization name)",
+        "required": true,
+        "examples": ["octocat", "microsoft", "facebook"]
+      },
+      {
+        "name": "repo",
+        "type": "string",
+        "description": "Название репозитория",
+        "required": true,
+        "examples": ["Hello-World", "vscode", "react"]
+      }
+    ]
+  },
+  {
+    "name": "analyze_dependency_vulnerabilities",
+    "description": "🛡️ Анализирует уязвимости зависимостей репозитория GitHub. Проверяет зависимости проекта на наличие известных уязвимостей: анализ файлов зависимостей, проверка на известные CVE, рекомендации по обновлению, критичность уязвимостей.",
+    "args": [
+      {
+        "name": "owner",
+        "type": "string",
+        "description": "Владелец репозитория (username или organization name)",
+        "required": true,
+        "examples": ["octocat", "microsoft", "facebook"]
+      },
+      {
+        "name": "repo",
+        "type": "string",
+        "description": "Название репозитория",
+        "required": true,
+        "examples": ["Hello-World", "vscode", "react"]
+      }
+    ]
+  },
+  {
+    "name": "check_repository_compliance",
+    "description": "✅ Проверяет compliance репозитория GitHub. Проверяет соответствие репозитория стандартам: наличие LICENSE файла, наличие README файла, наличие CONTRIBUTING файла, наличие CODE_OF_CONDUCT файла, наличие SECURITY.md файла, настройки репозитория.",
+    "args": [
+      {
+        "name": "owner",
+        "type": "string",
+        "description": "Владелец репозитория (username или organization name)",
+        "required": true,
+        "examples": ["octocat", "microsoft", "facebook"]
+      },
+      {
+        "name": "repo",
+        "type": "string",
+        "description": "Название репозитория",
+        "required": true,
+        "examples": ["Hello-World", "vscode", "react"]
+      }
+    ]
+  }
+]

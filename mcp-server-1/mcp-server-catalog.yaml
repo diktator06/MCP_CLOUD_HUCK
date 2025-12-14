@@ -1,0 +1,24 @@
+id: "github-repository-health-monitor"
+name: "GitHub Repository Health Monitor"
+description: "MCP сервер для мониторинга здоровья репозиториев GitHub. Предоставляет инструменты для анализа метрик репозиториев, issues и активности проектов."
+version: "0.1.0"
+tools:
+  - name: "get_repository_health"
+    description: "Получает метрики здоровья репозитория GitHub: количество открытых issues и PR, активность, популярность, статус репозитория"
+  - name: "get_repository_issues_summary"
+    description: "Получает сводку по issues репозитория: общее количество, распределение по labels, список последних issues, статистика по статусам"
+  - name: "get_repository_contributors"
+    description: "Получает список контрибьюторов репозитория: топ контрибьюторы по активности, общее количество, статистика по контрибуциям"
+rawEnvs:
+  - name: "PORT"
+    description: "Порт для MCP сервера"
+    defaultValue: "8000"
+  - name: "HOST"
+    description: "Хост для MCP сервера"
+    defaultValue: "0.0.0.0"
+secretEnvs:
+  - name: "GITHUB_TOKEN"
+    description: "GitHub API токен для аутентификации. Получить можно на https://github.com/settings/tokens"
+status: "MCP_SERVER_PREDEFINED_STATUS_AVAILABLE"
+type: "MCP_SERVER_PREDEFINED_TYPE_INTERNAL"
+

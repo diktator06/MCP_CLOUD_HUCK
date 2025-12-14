@@ -1,0 +1,21 @@
+{
+  "rawEnvs": {
+    "PORT": {
+      "isRequired": false,
+      "description": "Порт для MCP сервера",
+      "defaultValue": "8003"
+    },
+    "HOST": {
+      "isRequired": false,
+      "description": "Хост для MCP сервера",
+      "defaultValue": "0.0.0.0"
+    }
+  },
+  "secretEnvs": {
+    "GITHUB_TOKEN": {
+      "isRequired": true,
+      "description": "GitHub API токен для аутентификации. Получить можно на https://github.com/settings/tokens"
+    }
+  }
+}
+

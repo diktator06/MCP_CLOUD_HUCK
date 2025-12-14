@@ -1,0 +1,24 @@
+id: "github-security-compliance"
+name: "GitHub Security & Compliance"
+description: "MCP сервер для проверки безопасности и compliance репозиториев GitHub. Предоставляет инструменты для анализа security advisories, уязвимостей зависимостей и compliance проверок."
+version: "0.1.0"
+tools:
+  - name: "check_security_advisories"
+    description: "Проверяет security advisories репозитория: список security advisories, уязвимости и их статус, рекомендации по безопасности"
+  - name: "analyze_dependency_vulnerabilities"
+    description: "Анализирует уязвимости зависимостей проекта: проверка файлов зависимостей, известные CVE, рекомендации по обновлению"
+  - name: "check_repository_compliance"
+    description: "Проверяет compliance репозитория: наличие LICENSE, README, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY.md файлов"
+rawEnvs:
+  - name: "PORT"
+    description: "Порт для MCP сервера"
+    defaultValue: "8004"
+  - name: "HOST"
+    description: "Хост для MCP сервера"
+    defaultValue: "0.0.0.0"
+secretEnvs:
+  - name: "GITHUB_TOKEN"
+    description: "GitHub API токен для аутентификации. Получить можно на https://github.com/settings/tokens"
+status: "MCP_SERVER_PREDEFINED_STATUS_AVAILABLE"
+type: "MCP_SERVER_PREDEFINED_TYPE_INTERNAL"
+

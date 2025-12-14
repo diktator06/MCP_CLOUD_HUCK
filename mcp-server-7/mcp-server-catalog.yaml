@@ -1,0 +1,24 @@
+id: "github-webhooks-events"
+name: "GitHub Webhooks & Events"
+description: "MCP сервер для анализа webhooks и событий репозиториев GitHub. Предоставляет инструменты для получения списка webhooks, анализа событий и временной линии активности."
+version: "0.1.0"
+tools:
+  - name: "get_repository_webhooks"
+    description: "Получает список webhooks репозитория: список всех webhooks, URL webhooks, события, на которые настроены webhooks"
+  - name: "analyze_repository_events"
+    description: "Анализирует события репозитория: список последних событий, типы событий, активность по типам событий"
+  - name: "get_activity_timeline"
+    description: "Получает временную линию активности репозитория: события по датам, график активности, пики активности"
+rawEnvs:
+  - name: "PORT"
+    description: "Порт для MCP сервера"
+    defaultValue: "8006"
+  - name: "HOST"
+    description: "Хост для MCP сервера"
+    defaultValue: "0.0.0.0"
+secretEnvs:
+  - name: "GITHUB_TOKEN"
+    description: "GitHub API токен для аутентификации. Получить можно на https://github.com/settings/tokens"
+status: "MCP_SERVER_PREDEFINED_STATUS_AVAILABLE"
+type: "MCP_SERVER_PREDEFINED_TYPE_INTERNAL"
+

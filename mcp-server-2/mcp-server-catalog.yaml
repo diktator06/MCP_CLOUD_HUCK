@@ -1,0 +1,20 @@
+id: "github-repository-comparison-utility"
+name: "GitHub Repository Comparison Utility"
+description: "MCP сервер для сравнения метрик нескольких репозиториев GitHub. Выполняет параллельные запросы к GitHub API для получения и сравнения метрик репозиториев, определяет наиболее активный и популярный репозиторий."
+version: "0.1.0"
+tools:
+  - name: "compare_repositories"
+    description: "Сравнивает метрики нескольких репозиториев GitHub параллельно: количество звезд, форков, наблюдателей, открытых issues и PR, активность, основной язык программирования. Определяет наиболее активный и популярный репозиторий."
+rawEnvs:
+  - name: "PORT"
+    description: "Порт для MCP сервера"
+    defaultValue: "8001"
+  - name: "HOST"
+    description: "Хост для MCP сервера"
+    defaultValue: "0.0.0.0"
+secretEnvs:
+  - name: "GITHUB_TOKEN"
+    description: "GitHub API токен для аутентификации. Получить можно на https://github.com/settings/tokens"
+status: "MCP_SERVER_PREDEFINED_STATUS_AVAILABLE"
+type: "MCP_SERVER_PREDEFINED_TYPE_INTERNAL"
+

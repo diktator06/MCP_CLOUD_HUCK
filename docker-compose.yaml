@@ -1,0 +1,246 @@
+services:
+  # MCP Server 1: GitHub Repository Health Monitor
+  server-1:
+    platform: linux/amd64
+    build:
+      context: ./mcp-server-1
+      dockerfile: Dockerfile
+    container_name: mcp-server-1
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=${PORT:-8000}
+      - HOST=${HOST:-0.0.0.0}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.socket(); s.connect(('localhost', 8000)); s.close()\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # MCP Server 2: GitHub Repository Comparison Utility
+  server-2:
+    platform: linux/amd64
+    build:
+      context: ./mcp-server-2
+      dockerfile: Dockerfile
+    container_name: mcp-server-2
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - HOST=${HOST:-0.0.0.0}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.socket(); s.connect(('localhost', 8001)); s.close()\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # MCP Server 3: GitHub Activity Analytics
+  server-3:
+    platform: linux/amd64
+    build:
+      context: ./mcp-server-3
+      dockerfile: Dockerfile
+    container_name: mcp-server-3
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+      - HOST=${HOST:-0.0.0.0}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.socket(); s.connect(('localhost', 8002)); s.close()\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # MCP Server 4: GitHub Code Search & Analysis
+  server-4:
+    platform: linux/amd64
+    build:
+      context: ./mcp-server-4
+      dockerfile: Dockerfile
+    container_name: mcp-server-4
+    ports:
+      - "8003:8003"
+    environment:
+      - PORT=8003
+      - HOST=${HOST:-0.0.0.0}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.socket(); s.connect(('localhost', 8003)); s.close()\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # MCP Server 5: GitHub Security & Compliance
+  server-5:
+    platform: linux/amd64
+    build:
+      context: ./mcp-server-5
+      dockerfile: Dockerfile
+    container_name: mcp-server-5
+    ports:
+      - "8004:8004"
+    environment:
+      - PORT=8004
+      - HOST=${HOST:-0.0.0.0}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.socket(); s.connect(('localhost', 8004)); s.close()\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # MCP Server 6: GitHub Releases & Tags
+  server-6:
+    platform: linux/amd64
+    build:
+      context: ./mcp-server-6
+      dockerfile: Dockerfile
+    container_name: mcp-server-6
+    ports:
+      - "8005:8005"
+    environment:
+      - PORT=8005
+      - HOST=${HOST:-0.0.0.0}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.socket(); s.connect(('localhost', 8005)); s.close()\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # MCP Server 7: GitHub Webhooks & Events
+  server-7:
+    platform: linux/amd64
+    build:
+      context: ./mcp-server-7
+      dockerfile: Dockerfile
+    container_name: mcp-server-7
+    ports:
+      - "8006:8006"
+    environment:
+      - PORT=8006
+      - HOST=${HOST:-0.0.0.0}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.socket(); s.connect(('localhost', 8006)); s.close()\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # AI Agent: LangChain Agent with Evolution Foundation Models (FastAPI)
+  ai-agent:
+    platform: linux/amd64
+    build:
+      context: ./ai-agent
+      dockerfile: Dockerfile
+    container_name: ai-agent
+    command: python src/api_server.py
+    ports:
+      - "8080:8000"
+    environment:
+      - API_KEY=${API_KEY}
+      - BASE_URL=${BASE_URL:-https://foundation-models.api.cloud.ru/v1}
+      - DEFAULT_MODEL=${DEFAULT_MODEL:-Qwen/Qwen3-Next-80B-A3B-Instruct}
+      - PORT=8000
+      - MCP_SERVER_1_URL=http://server-1:8000
+      - MCP_SERVER_2_URL=http://server-2:8001
+      - MCP_SERVER_3_URL=http://server-3:8002
+      - MCP_SERVER_4_URL=http://server-4:8003
+      - MCP_SERVER_5_URL=http://server-5:8004
+      - MCP_SERVER_6_URL=http://server-6:8005
+      - MCP_SERVER_7_URL=http://server-7:8006
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    depends_on:
+      server-1:
+        condition: service_healthy
+      server-2:
+        condition: service_healthy
+      server-3:
+        condition: service_healthy
+      server-4:
+        condition: service_healthy
+      server-5:
+        condition: service_healthy
+      server-6:
+        condition: service_healthy
+      server-7:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # Frontend: Streamlit Application
+  frontend:
+    platform: linux/amd64
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://ai-agent:8000
+    networks:
+      - mcp-network
+    depends_on:
+      - ai-agent
+    restart: unless-stopped
+
+networks:
+  mcp-network:
+    driver: bridge
+

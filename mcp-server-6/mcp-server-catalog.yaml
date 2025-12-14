@@ -1,0 +1,24 @@
+id: "github-releases-tags"
+name: "GitHub Releases & Tags"
+description: "MCP сервер для анализа релизов и тегов репозиториев GitHub. Предоставляет инструменты для получения сводки по релизам, анализа тегов и сравнения версий."
+version: "0.1.0"
+tools:
+  - name: "get_releases_summary"
+    description: "Получает сводку по релизам репозитория: список всех релизов, последний релиз, статистика по релизам, информация о версиях"
+  - name: "analyze_repository_tags"
+    description: "Анализирует теги репозитория: список всех тегов, последний тег, статистика по тегам, паттерны версионирования"
+  - name: "compare_release_versions"
+    description: "Сравнивает версии релизов: сравнение версий по семантическому версионированию, определение типа обновления"
+rawEnvs:
+  - name: "PORT"
+    description: "Порт для MCP сервера"
+    defaultValue: "8005"
+  - name: "HOST"
+    description: "Хост для MCP сервера"
+    defaultValue: "0.0.0.0"
+secretEnvs:
+  - name: "GITHUB_TOKEN"
+    description: "GitHub API токен для аутентификации. Получить можно на https://github.com/settings/tokens"
+status: "MCP_SERVER_PREDEFINED_STATUS_AVAILABLE"
+type: "MCP_SERVER_PREDEFINED_TYPE_INTERNAL"
+

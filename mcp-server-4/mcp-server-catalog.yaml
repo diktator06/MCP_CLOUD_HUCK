@@ -1,0 +1,24 @@
+id: "github-code-search-analysis"
+name: "GitHub Code Search & Analysis"
+description: "MCP сервер для поиска и анализа кода в репозиториях GitHub. Предоставляет инструменты для поиска кода, анализа структуры файлов и зависимостей проектов."
+version: "0.1.0"
+tools:
+  - name: "search_code_in_repository"
+    description: "Ищет код в репозитории по запросу: поиск по тексту, фильтрация по языку, поиск в конкретных файлах, возвращает контекст найденного кода"
+  - name: "get_file_tree"
+    description: "Получает структуру файлов и директорий репозитория: дерево файлов, размеры файлов, типы файлов, основные директории проекта"
+  - name: "analyze_dependencies"
+    description: "Анализирует зависимости репозитория: Python (requirements.txt, pyproject.toml), JavaScript (package.json), Java (pom.xml), Go (go.mod), Rust (Cargo.toml)"
+rawEnvs:
+  - name: "PORT"
+    description: "Порт для MCP сервера"
+    defaultValue: "8003"
+  - name: "HOST"
+    description: "Хост для MCP сервера"
+    defaultValue: "0.0.0.0"
+secretEnvs:
+  - name: "GITHUB_TOKEN"
+    description: "GitHub API токен для аутентификации. Получить можно на https://github.com/settings/tokens"
+status: "MCP_SERVER_PREDEFINED_STATUS_AVAILABLE"
+type: "MCP_SERVER_PREDEFINED_TYPE_INTERNAL"
+

@@ -1,0 +1,24 @@
+id: "github-activity-analytics"
+name: "GitHub Activity Analytics"
+description: "MCP сервер для анализа активности репозиториев GitHub. Предоставляет инструменты для анализа коммитов, активности разработчиков и структуры веток."
+version: "0.1.0"
+tools:
+  - name: "get_commit_statistics"
+    description: "Получает статистику коммитов репозитория: общее количество, статистика по периодам, активность по дням недели, топ авторов коммитов"
+  - name: "get_developer_activity"
+    description: "Получает статистику активности разработчиков: топ контрибьюторы по коммитам, активность по периодам, распределение активности"
+  - name: "get_branch_analysis"
+    description: "Анализирует структуру веток репозитория: список всех веток, активные и неактивные ветки, защищенные ветки, статистика"
+rawEnvs:
+  - name: "PORT"
+    description: "Порт для MCP сервера"
+    defaultValue: "8002"
+  - name: "HOST"
+    description: "Хост для MCP сервера"
+    defaultValue: "0.0.0.0"
+secretEnvs:
+  - name: "GITHUB_TOKEN"
+    description: "GitHub API токен для аутентификации. Получить можно на https://github.com/settings/tokens"
+status: "MCP_SERVER_PREDEFINED_STATUS_AVAILABLE"
+type: "MCP_SERVER_PREDEFINED_TYPE_INTERNAL"
+

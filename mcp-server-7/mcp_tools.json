@@ -1,0 +1,76 @@
+[
+  {
+    "name": "get_repository_webhooks",
+    "description": "🔔 Получает список webhooks репозитория GitHub. Анализирует webhooks репозитория: список всех webhooks, URL webhooks, события, на которые настроены webhooks, статус webhooks (active/inactive).",
+    "args": [
+      {
+        "name": "owner",
+        "type": "string",
+        "description": "Владелец репозитория (username или organization name)",
+        "required": true,
+        "examples": ["octocat", "microsoft", "facebook"]
+      },
+      {
+        "name": "repo",
+        "type": "string",
+        "description": "Название репозитория",
+        "required": true,
+        "examples": ["Hello-World", "vscode", "react"]
+      }
+    ]
+  },
+  {
+    "name": "analyze_repository_events",
+    "description": "📅 Анализирует события репозитория GitHub. Анализирует события репозитория: список последних событий, типы событий (PushEvent, IssuesEvent, PullRequestEvent и т.д.), активность по типам событий, временная статистика событий.",
+    "args": [
+      {
+        "name": "owner",
+        "type": "string",
+        "description": "Владелец репозитория (username или organization name)",
+        "required": true,
+        "examples": ["octocat", "microsoft", "facebook"]
+      },
+      {
+        "name": "repo",
+        "type": "string",
+        "description": "Название репозитория",
+        "required": true,
+        "examples": ["Hello-World", "vscode", "react"]
+      },
+      {
+        "name": "limit",
+        "type": "integer",
+        "description": "Количество последних событий для анализа (по умолчанию: 30, минимум: 1, максимум: 100)",
+        "required": false,
+        "examples": [30, 50]
+      }
+    ]
+  },
+  {
+    "name": "get_activity_timeline",
+    "description": "📈 Получает временную линию активности репозитория GitHub. Создает временную линию активности: события по датам, график активности, пики активности, периоды затишья.",
+    "args": [
+      {
+        "name": "owner",
+        "type": "string",
+        "description": "Владелец репозитория (username или organization name)",
+        "required": true,
+        "examples": ["octocat", "microsoft", "facebook"]
+      },
+      {
+        "name": "repo",
+        "type": "string",
+        "description": "Название репозитория",
+        "required": true,
+        "examples": ["Hello-World", "vscode", "react"]
+      },
+      {
+        "name": "days",
+        "type": "integer",
+        "description": "Количество дней для анализа (по умолчанию: 30, минимум: 1, максимум: 365)",
+        "required": false,
+        "examples": [30, 60, 90]
+      }
+    ]
+  }
+]
