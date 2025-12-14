@@ -223,6 +223,48 @@ services:
       start_period: 10s
     restart: unless-stopped
 
+  # AI Agent Interactive Mode (интерактивный режим через docker attach)
+  ai-agent-interactive:
+    platform: linux/amd64
+    build:
+      context: ./ai-agent
+      dockerfile: Dockerfile
+    container_name: ai-agent-interactive
+    command: python src/start_a2a.py
+    stdin_open: true
+    tty: true
+    environment:
+      - API_KEY=${API_KEY}
+      - BASE_URL=${BASE_URL:-https://foundation-models.api.cloud.ru/v1}
+      - DEFAULT_MODEL=${DEFAULT_MODEL:-Qwen/Qwen3-Next-80B-A3B-Instruct}
+      - MCP_SERVER_1_URL=http://server-1:8000
+      - MCP_SERVER_2_URL=http://server-2:8001
+      - MCP_SERVER_3_URL=http://server-3:8002
+      - MCP_SERVER_4_URL=http://server-4:8003
+      - MCP_SERVER_5_URL=http://server-5:8004
+      - MCP_SERVER_6_URL=http://server-6:8005
+      - MCP_SERVER_7_URL=http://server-7:8006
+    env_file:
+      - .env
+    networks:
+      - mcp-network
+    depends_on:
+      server-1:
+        condition: service_healthy
+      server-2:
+        condition: service_healthy
+      server-3:
+        condition: service_healthy
+      server-4:
+        condition: service_healthy
+      server-5:
+        condition: service_healthy
+      server-6:
+        condition: service_healthy
+      server-7:
+        condition: service_healthy
+    restart: unless-stopped
+
   # Frontend: Streamlit Application
   frontend:
     platform: linux/amd64
