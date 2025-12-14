@@ -114,12 +114,12 @@ jobs:
       # Step 14: Test Docker Compose configuration
       - name: Test Docker Compose configuration
         run: |
-          docker-compose config --quiet
+          docker compose config --quiet
       
       # Step 15: Build Docker images for AMD64 (verification)
       - name: Build Docker images for AMD64
         run: |
-          docker-compose build --platform linux/amd64 2>&1 | head -100
+          docker compose build --platform linux/amd64 2>&1 | head -100
         continue-on-error: true
       
       # Step 16: Verify Docker images
