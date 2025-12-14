@@ -28,7 +28,8 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["src"]
+# Автоматический поиск пакетов
+packages = {find = {}}
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml", "*.json"]
