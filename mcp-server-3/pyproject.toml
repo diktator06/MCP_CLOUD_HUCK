@@ -32,6 +32,7 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 # Автоматический поиск пакетов
 packages = {find = {}}
+py-modules = ["server", "mcp_instance", "metrics"]
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml", "*.json"]
