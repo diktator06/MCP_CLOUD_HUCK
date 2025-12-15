@@ -548,27 +548,55 @@ docker attach ai-agent-interactive
 Создайте файл `.env` в корне проекта со следующим содержимым:
 
 ```bash
+# ============================================
+# ОБЯЗАТЕЛЬНЫЕ ПЕРЕМЕННЫЕ (необходимо заполнить)
+# ============================================
+
 # GitHub API токен (обязательно)
+# Получить: https://github.com/settings/tokens
+# Права: public_repo
 GITHUB_TOKEN=your_github_token_here
 
 # Cloud.ru Evolution Foundation Models API Key (обязательно)
+# Получить: войдите в платформу Cloud.ru → Evolution Foundation Models
 API_KEY=your_cloud_ru_api_key_here
 
-# Base URL для Evolution Foundation Models (опционально)
+# ============================================
+# ОПЦИОНАЛЬНЫЕ ПЕРЕМЕННЫЕ (можно не указывать, будут использованы значения по умолчанию)
+# ============================================
+
+# Base URL для Evolution Foundation Models API
+# По умолчанию: https://foundation-models.api.cloud.ru/v1
 BASE_URL=https://foundation-models.api.cloud.ru/v1
 
-# Модель по умолчанию (опционально)
+# Модель по умолчанию для AI агента
+# По умолчанию: Qwen/Qwen3-Next-80B-A3B-Instruct
+# Доступные модели см. в разделе "ModelManager - Переключение моделей"
 DEFAULT_MODEL=Qwen/Qwen3-Next-80B-A3B-Instruct
 
-# Порт для AI Agent (опционально)
+# Порт для MCP серверов (используется для server-1)
+# По умолчанию: 8000
 PORT=8000
 
-# Хост для AI Agent (опционально)
+# Хост для привязки сервисов
+# По умолчанию: 0.0.0.0 (все интерфейсы)
 HOST=0.0.0.0
 
-# Python unbuffered (опционально, для лучшего логирования)
+# Python unbuffered режим (для лучшего логирования в Docker)
+# По умолчанию: 1 (включен)
 PYTHONUNBUFFERED=1
 ```
+
+### Минимальная конфигурация
+
+Для запуска проекта достаточно указать только обязательные переменные:
+
+```bash
+GITHUB_TOKEN=your_github_token_here
+API_KEY=your_cloud_ru_api_key_here
+```
+
+Все остальные переменные будут использовать значения по умолчанию.
 
 ### Получение токенов
 
